@@ -7,7 +7,7 @@ Given an array of integers and an integer 'target', return an integer array of t
 - First attempt: brute force
   - My instinct was to loop over the array, look at a combination of two integers and check if the sum equals 'target' only if that combination wasn't looked 
   at already. I thought this approach would be in O(n) time and O(1) space since the loop wouldn't look at elements behind i, but for much larger arrays, 
-  this would approximate to O(n^2) time since we're still looking at every other element for an ith element. I thought about using a hashset at some point, 
+  this would approximate to O(n^2)*1/2 ~ O(n^2) time since we're still looking at every other element for an ith element. I thought about using a hashset at some point, 
   but for the wrong reason. 
 
 - Approaches
