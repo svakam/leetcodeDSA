@@ -5,7 +5,7 @@ package leetcodeDSA;
 // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 public class AddTwoNumbersLL {
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
@@ -13,8 +13,8 @@ public class AddTwoNumbersLL {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
-    static class Solution {
-        long createIntFromReversedLL(ListNode list) {
+    static class SolutionSmallNumbers {
+        long createNumFromReversedLL(ListNode list) {
             // take current node being looked at, multiply it by 10 to the power of i, and add it to sum
             // return sum
             ListNode current = list;
@@ -29,7 +29,7 @@ public class AddTwoNumbersLL {
         }
 
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-            long total = createIntFromReversedLL(l1) + createIntFromReversedLL(l2);
+            long total = createNumFromReversedLL(l1) + createNumFromReversedLL(l2);
             ListNode totalLL = null;
             ListNode current = null;
 
@@ -37,13 +37,11 @@ public class AddTwoNumbersLL {
             boolean flag = true;
             while (flag) {
                 double lastPlace = total % 10;
-                System.out.println((int) lastPlace);
                 if (totalLL == null) {
                     totalLL = new ListNode((int) lastPlace);
                     current = totalLL;
                 } else {
-                    ListNode newNode = new ListNode((int) lastPlace);
-                    current.next = newNode;
+                    current.next = new ListNode((int) lastPlace);
                     current = current.next;
                 }
                 if (total % 10 == total) {
@@ -52,6 +50,35 @@ public class AddTwoNumbersLL {
                 total = total / 10;
             }
             return totalLL;
+        }
+    }
+
+    static class LCSolution {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            ListNode dummyHead = new ListNode(0);
+            ListNode p = l1, q = l2, curr = dummyHead;
+            int carry = 0;
+            // while either value isn't null
+            while (p != null || q != null) {
+                // if a value isn't null, set its value to variable, else set variable to 0
+                int x = (p != null) ? p.val : 0;
+                int y = (q != null) ? q.val : 0;
+                int sum = carry + x + y;
+                carry = sum / 10;
+
+                // add to sum list and traverse
+                curr.next = new ListNode(sum % 10);
+                curr = curr.next;
+
+                // if a value isn't null, traverse to next
+                if (p != null) p = p.next;
+                if (q != null) q = q.next;
+            }
+            // edge case: carry carries over if last digits create one
+            if (carry > 0) {
+                curr.next = new ListNode(carry);
+            }
+            return dummyHead.next;
         }
     }
 }
