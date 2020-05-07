@@ -6,6 +6,7 @@ Repo for all practice problems done on LeetCode.
   - Two Sum
 - Medium
   - Add Two Numbers (LL)
+  - Longest Substring Without Repeating Characters
 - Hard
 
 ## Easy
@@ -61,5 +62,27 @@ Given two LLs representing the digits of two reversed non-negative integers, add
     The edge cases are accounted for as well: one list longer than the other, one list is null, and the sum having an extra carry of one at the very end (999 + 1). 
     Time and space complexity are written as such since the max iterations for time would be over the longest list, and the max number of nodes are created for the 
     longest list as well (O(max(m,n) + O(1) carry) ~ O(max(m,n))).
+    
+### Longest Substring Without Repeating Characters
+Given a string, return the length of the longest substring that doesn't contain a repeating character. 
+- First attempt: parsing string and backtracking to last unique char
+  - For Java, charAt(index i) is the only way to go about parsing a string. While i doesn't exceed the length of the string, parse through the string, keeping track
+  of the length of a given substring of unique characters seen thus far. Unique characters are kept track of with a hashset that stores characters seen for a given
+  substring. If a character being looked at is in the hashset, get the length of this substring, store it as the longest substring if it's longer than the previous
+  length, and trace back to the character that proceeds the character that was repeated. Reset the hashset and the length of the substring and repeat this process. 
+
+- Approaches: time and efficiency
+  - My solution: parsing and backtracking (sliding window)
+    - Time: O(n)
+    - Space: O(n)
+    - Explanation: Worst case, with a given string like "abcabcabcabcabcabcabc", this implementation would cause each letter to be looked at 4 times due to the backtracing. 
+    For n characters, this is a time of O((m+1)*n) ~ O(mn), where m is the number of unique characters in each repeated longest substring. For space, assuming no repeated
+    characters, the substring would be as long as n length of the whole string, O(n). 
+  - Brute force
+    - Time: O(n^3) 
+    - Space: O(min(n,m))
+    - Explanation: I can't understand this method at the moment. Will update later. Code is in the class for this problem. 
+    - https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
+  - 
 
 ## Hard
