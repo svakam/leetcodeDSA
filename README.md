@@ -83,6 +83,52 @@ Given a string, return the length of the longest substring that doesn't contain 
     - Space: O(min(n,m))
     - Explanation: I can't understand this method at the moment. Will update later. Code is in the class for this problem. 
     - https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
-  - 
+
+### Longest Palindromic Substring
+Given a String s, return the longest substring that is also a palindrome. 
+- First attempt: I created lists via hashmaps of the locations of repeated characters, and then checked each set of repeated characters for a longest palindrome. If the current set 
+is longer than the current length of the longest palindrome, check if it's a valid palindrome and reset that length and the current palindrome. This approach was not accepted by LC 
+(runtime > 600ms exceeded time limit). 
+
+- Approaches: time and efficiency
+  - My solution: track indices of repeated chars
+    - Time: O(n). One iteration of the string is done to get all repeated char locations. Then for every repeated character, check where it's repeated and iterate through the substring
+    to check for a palindrome. This can approach O(n^2) if the entire string is a palindrome. 
+    - Space: O(1). Number of repeated characters are independent of the size of the input string. If every character in the string is unique, this can approach O(n) since each character
+    is stored in the hashmaps along with where it's located. 
+  - LC: expand around center
+    - Time: O(n^2)
+    - Space: O(1)
+    - Explanation: A palindrome can be expanded from its center, and there are 2n - 1 such centers. This takes into account the fact that a palindrome can originate between two letters
+    ("abba"). A palindrome is checked for at every location of the string, and this can approach O(n^2) if the entire string is a palindrome. 
+
+### ZigZag Conversion
+Given a String s and an integer of number of rows, return the string after it's been 'zigzagged'. 
+- Example: "ABCABCDEFDEF", rows = 3
+- A   B   F
+- B A C E D F -> "ABFBACEDFCDE"
+- C   D   E
+- First attempt: creating a matrix that holds the zigzagged string and looping through it
+  - I first determined the size of the matrix that needs to hold the zigzagged string. I parsed through the input string, and given a character of the string currently being looked 
+  at, I would determine what row it's placed at. If the rows have been filled up for 1 column, I change the row and column position accordingly, effectively zigzagging 
+  the string until the row is reset to 0. Once the size is determined, I created the array and looped through the string again to fill the array with the characters. I finally
+  loop through the array's rows to output the final string. 
+  
+- Approaches: time and efficiency
+  - My solution: creating and looping through matrix
+    - Time: O(n^3). I loop through n characters of the string to find the matrix size, loop again through n characters to place the characters into the matrix, and loop through
+    the array's size to get the output string. This can get higher than O(n^3) if there are a lot of empty spaces within the array, assuming a large number of rows for large strings.
+    This is not a great approach. 
+    - Space: O(n). As the number of rows increases and the string gets longer, there is more potential for 'empty' spaces in the array with characters being placed within the zigzag. 
+    For every new row allotted above 2, there is an additional column created for each character zigzagging back to the top of the matrix. So for a String of n characters, m rows, 
+    and k columns, the matrix size will be m * k(1 + m - 2) = m * k(m - 1) = m * km - k = m^2*k - k = k(m^2) - k. For m rows, there is the potential for 1 column to be fully filled 
+    up to m, and then (m - 2) columns after that. Example: "PAYPALISHIRING", 5 rows -> PAYPA takes up 1 column, then 3 columns, 1 each for LIS on the way back up = 4 columns for 5 rows
+    per 5 + 3 = 8 characters. All in all, wasteful. 
+  - LC: Sort by row
+    - Time: O(n)
+    - Space: O(n)
+    - Explanation: Use Math.min(numRows, s.length()) to represent non-empty rows of the zigzag. Iterate through s from left to right, appending each character to appropriate row. The 
+    row is tracked with current row and current direction variables. The current direction changes only when we moved up to the topmost row or down to the bottommost. 
+  
 
 ## Hard
