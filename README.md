@@ -85,7 +85,22 @@ Given a string, return the length of the longest substring that doesn't contain 
     - https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
 
 ### Longest Palindromic Substring
-Given a String s, 
+Given a String s, return the longest substring that is also a palindrome. 
+- First attempt: I created lists via hashmaps of the locations of repeated characters, and then checked each set of repeated characters for a longest palindrome. If the current set 
+is longer than the current length of the longest palindrome, check if it's a valid palindrome and reset that length and the current palindrome. This approach was not accepted by LC 
+(runtime > 600ms exceeded time limit). 
+
+- Approaches: time and efficiency
+  - My solution: track indices of repeated chars
+    - Time: O(n). One iteration of the string is done to get all repeated char locations. Then for every repeated character, check where it's repeated and iterate through the substring
+    to check for a palindrome. This can approach O(n^2) if the entire string is a palindrome. 
+    - Space: O(1). Number of repeated characters are independent of the size of the input string. If every character in the string is unique, this can approach O(n) since each character
+    is stored in the hashmaps along with where it's located. 
+  - LC: expand around center
+    - Time: O(n^2)
+    - Space: O(1)
+    - Explanation: A palindrome can be expanded from its center, and there are 2n - 1 such centers. This takes into account the fact that a palindrome can originate between two letters
+    ("abba"). A palindrome is checked for at every location of the string, and this can approach O(n^2) if the entire string is a palindrome. 
 
 ### ZigZag Conversion
 Given a String s and an integer of number of rows, return the string after it's been 'zigzagged'. 
