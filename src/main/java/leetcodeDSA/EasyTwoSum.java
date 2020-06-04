@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // Given an array of integers and an integer 'target', return an integer array of the indices of the input array that whose values summed equal 'target'.
-public class TwoSum {
+public class EasyTwoSum {
     // runtime: 75 ms, faster than 11.83% submissions
     // memory: 40.1 mb, less than 5.65% submissions
     // time: O(n^2) - worst case traverse n-1 times and look at n elements
