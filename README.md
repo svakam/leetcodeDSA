@@ -41,8 +41,8 @@ Reverse a given integer. If the integer overflows, return 0.
   after the last digit has been removed and added to the list. Once the input integer can't be divided any further (input / 10 = 0), iterate through the list and create the
   reversed integer by multiplying the appropriate digits by 10 to the power of the place that it needs to be in. 
   - I wasn't familiar with how Java deals with integer overflow, what the max value is for an int, and how to deal with overflow in this case. I'm assuming that for this 
-  reason, the ratio of upvotes/downvotes in LC for this question is unfavorable since it favors those who know the Java library better than those who only know how to 
-  solve a traditional whiteboarding problem. 
+  reason, the ratio of upvotes/downvotes in LC for this question is unfavorable since it favors those who happen to know the Java library (more specifically, how Integer.MAX_VALUE works)
+  over traditional whiteboarding applicants. 
 - Approaches: time and efficiency
   - Push and pop with modulo
     - Time: O(n). Iterate through every digit once to pop and push into the list, and iterate again through the list to create a final reversed integer (O(2n) ~ O(n)). 
@@ -128,9 +128,9 @@ is longer than the current length of the longest palindrome, check if it's a val
 ### ZigZag Conversion
 Given a String s and an integer of number of rows, return the string after it's been 'zigzagged'. 
 - Example: "ABCABCDEFDEF", rows = 3
-- A   B   F
+- A . B . F
 - B A C E D F -> "ABFBACEDFCDE"
-- C   D   E
+- C . D . E
 - First attempt: creating a matrix that holds the zigzagged string and looping through it
   - I first determined the size of the matrix that needs to hold the zigzagged string. I parsed through the input string, and given a character of the string currently being looked 
   at, I would determine what row it's placed at. If the rows have been filled up for 1 column, I change the row and column position accordingly, effectively zigzagging 
