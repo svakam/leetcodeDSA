@@ -128,9 +128,11 @@ is longer than the current length of the longest palindrome, check if it's a val
 ### ZigZag Conversion
 Given a String s and an integer of number of rows, return the string after it's been 'zigzagged'. 
 - Example: "ABCABCDEFDEF", rows = 3
-- A .. B .. F
-- B A C E D F -> "ABFBACEDFCDE"
-- C .. D .. E
+```
+A . B . F
+B A C E D F -> "ABFBACEDFCDE"
+C . D . E
+```
 - First attempt: creating a matrix that holds the zigzagged string and looping through it
   - I first determined the size of the matrix that needs to hold the zigzagged string. I parsed through the input string, and given a character of the string currently being looked 
   at, I would determine what row it's placed at. If the rows have been filled up for 1 column, I change the row and column position accordingly, effectively zigzagging 
