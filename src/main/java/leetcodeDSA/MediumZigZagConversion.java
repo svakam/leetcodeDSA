@@ -3,7 +3,7 @@ package leetcodeDSA;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZigZagConversion {
+public class MediumZigZagConversion {
     // first attempt: matrix
     // time: 35 ms, faster than 13.76% Java online submissions
     // memory: 48 MB, less than 5.65% submissions

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 // Given a string, find the length of the longest substring without repeating characters.
-public class LengthLongestSubStr {
+public class MediumLengthLongestSubStr {
     // first attempt: parse and backtrack (sliding window)
     // runtime: 101ms (faster than 11.48% submissions)
     // memory: 39.7 MB (less than 12.75% submissions)

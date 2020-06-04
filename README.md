@@ -33,6 +33,29 @@ Given an array of integers and an integer 'target', return an integer array of t
     - Space: O(n)
     - Explanation: This approach utilizes a one-pass traversal to first check if the complement exists, and if it does, return its index and the current index. 
     If it doesn't, only then add the current element and its index to the HT. 
+    
+### Reverse Integer
+Reverse a given integer. If the integer overflows, return 0. 
+- First attempt: push and pop with modulo
+  - To reverse an integer, get the digit at the 1's place and add it to a LinkedList<Integer> that stores the reversed integers. Reassign the input integer to the integer
+  after the last digit has been removed and added to the list. Once the input integer can't be divided any further (input / 10 = 0), iterate through the list and create the
+  reversed integer by multiplying the appropriate digits by 10 to the power of the place that it needs to be in. 
+  - I wasn't familiar with how Java deals with integer overflow, what the max value is for an int, and how to deal with overflow in this case. I'm assuming that for this 
+  reason, the ratio of upvotes/downvotes in LC for this question is unfavorable since it favors those who know the Java library better than those who only know how to 
+  solve a traditional whiteboarding problem. 
+- Approaches: time and efficiency
+  - Push and pop with modulo
+    - Time: O(n). Iterate through every digit once to pop and push into the list, and iterate again through the list to create a final reversed integer (O(2n) ~ O(n)). 
+    - Space: O(n). The LinkedList<Integer> to hold the digits will contain every digit in the input integer. 
+  - LC: push and pop digits and check before overflow
+    - Time: O(log(x)). There are roughly log(input) digits in the input integer. Example: x = 100, log(100) = 2, roughly 2 digits. 
+    - Space: O(1). 
+    - Explanation: build the reverse integer one digit at a time. While doing so, check beforehand whether or not appending another digit causes overflow. This is similar
+    to my approach, but takes into account overflow. A pop operation is `pop = x % 10; x /= 10`, and a push operation is `temp = rev * 10 + pop; rev = temp;`. 
+    `temp = rev * 10 + pop` has the potential to cause overflow if the result is greater than `Integer.MAX_VALUE`. Therefore, a check is needed before `rev` is assigned
+    to `temp`. Knowing that `Integer.MAX_VALUE` is 2147483647, if `pop` is ever greater than 7, there is a potential to overflow if `rev == Integer.MAX_VALUE / 10`. Overflow will 
+    also occur if `rev > Integer.MAX_VALUE`. 
+
 
 ## Medium
 ### Add Two Numbers (LL)

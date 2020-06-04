@@ -3,7 +3,7 @@ package leetcodeDSA;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class LongestSubStrPalindrome {
+public class MediumLongestSubStrPalindrome {
     // first attempt: time limit exceeded (runtime: 634 ms) and probably memory too
     public boolean isPalindromeFirstAttempt(String s, int start, int end) {
         while (start != end) {
