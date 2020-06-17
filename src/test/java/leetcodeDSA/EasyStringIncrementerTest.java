@@ -26,5 +26,11 @@ public class EasyStringIncrementerTest {
         assertEquals("AAA", EasyStringIncrementer.incrementer(test3));
         String test4 = "ZZ,B";
         assertEquals("ZZ,C", EasyStringIncrementer.incrementer(test4));
+        String test5 = "ZABZ";
+        assertEquals("ZACA", EasyStringIncrementer.incrementer(test5));
+        String test6 = "ZYZZ";
+        assertEquals("ZZAA", EasyStringIncrementer.incrementer(test6));
+        String test7 = "ZZZZZ";
+        assertEquals("AAAAAA", EasyStringIncrementer.incrementer(test7));
     }
 }
