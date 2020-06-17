@@ -65,7 +65,9 @@ Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -
   the 1 needs to be carried. Similarly, A is the new digit while the increment is carried to the next placeholder. If the next sum is also greater than 
   Z, continue to carry the increment until the increment is fully used or the String needs to start over with all A's. 
 - Time and efficiency
-  - Time: O(n). Worst case, the String looks like "ZZZZZ" and the increment needs to be carried over every letter to finally output "AAAAAA". 
+  - Time: O(2n) ~ O(n). Worst case, the String looks like "ZZZZZ" and the increment needs to be carried over every letter to finally output "AAAAAA".
+  In addition, since the function's middleman output is the reversed String (since it starts with the "1's" place and builds up), an additional reversal
+  is implemented for the final output, causing O(2n) ~ O(n).  
   - Space: O(n). The original String is immutable, thus an additional String copy is created for the output per n letters in the input. 
 
 
