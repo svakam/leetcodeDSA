@@ -55,6 +55,20 @@ Reverse a given integer. If the integer overflows, return 0.
     `temp = rev * 10 + pop` has the potential to cause overflow if the result is greater than `Integer.MAX_VALUE`. Therefore, a check is needed before `rev` is assigned
     to `temp`. Knowing that `Integer.MAX_VALUE` is 2147483647, if `pop` is ever greater than 7, there is a potential to overflow if `rev == Integer.MAX_VALUE / 10`. Overflow will 
     also occur if `rev > Integer.MAX_VALUE`. 
+    
+### String Incrementer
+Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -> "ZABB", "ZZYZ" -> "ZZZA", "ZZZZ" -> "AAAAA"
+
+- My solution: carry vs. non carry
+  - Treat the String like a number, but in base 26. Since the function only increments the String by 1, there are only 2 cases possible: the last digit
+  is either Z or not Z. If the last is Z, this is like the last digit of a number being 9 and adding 1 to it. The sum is 10, and a 0 is used while 
+  the 1 needs to be carried. Similarly, A is the new digit while the increment is carried to the next placeholder. If the next sum is also greater than 
+  Z, continue to carry the increment until the increment is fully used or the String needs to start over with all A's. 
+- Time and efficiency
+  - Time: O(2n) ~ O(n). Worst case, the String looks like "ZZZZZ" and the increment needs to be carried over every letter to finally output "AAAAAA".
+  In addition, since the function's middleman output is the reversed String (since it starts with the "1's" place and builds up), an additional reversal
+  is implemented for the final output, causing O(2n) ~ O(n).  
+  - Space: O(n). The original String is immutable, thus an additional String copy is created for the output per n letters in the input. 
 
 
 ## Medium
