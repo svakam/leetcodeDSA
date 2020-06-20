@@ -56,7 +56,7 @@ Reverse a given integer. If the integer overflows, return 0.
     to `temp`. Knowing that `Integer.MAX_VALUE` is 2147483647, if `pop` is ever greater than 7, there is a potential to overflow if `rev == Integer.MAX_VALUE / 10`. Overflow will 
     also occur if `rev > Integer.MAX_VALUE`. 
     
-### String Incrementer
+### String Incrementer (not-LC)
 Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -> "ZABB", "ZZYZ" -> "ZZZA", "ZZZZ" -> "AAAAA"
 
 - My solution: carry vs. non carry
@@ -70,6 +70,16 @@ Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -
   is implemented for the final output, causing O(2n) ~ O(n).  
   - Space: O(n). The original String is immutable, thus an additional String copy is created for the output per n letters in the input. 
 
+### Subtract Binary (non-LC)
+Given a binary number in String format, return the fewest number of operations it takes to reduce it to 0.
+
+- My solution: string parsing
+  - If the number ends in 1, it can be subtracted by 1. Take the substring from the beginning up to the end excluding the last digit. 
+  Append a 0. If the number ends in 0, it can be divided by 2. Take the substring from the beginning up to the end excluding the last digit. 
+  Do a check at the beginning for leading 0s and remove them from the binary. 
+- Time and efficiency
+  - Time: O(time taken by contains() method of String object). If the string still contains a "1", the while block will execute. 
+  - Space: O(1). 
 
 ## Medium
 ### Add Two Numbers (LL)

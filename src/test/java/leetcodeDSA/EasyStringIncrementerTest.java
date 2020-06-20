@@ -3,6 +3,7 @@ package leetcodeDSA;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+// not from LC
 public class EasyStringIncrementerTest {
     @Test
     public void testSingleChars() {

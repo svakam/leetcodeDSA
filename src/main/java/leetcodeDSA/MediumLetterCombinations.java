@@ -17,26 +17,7 @@
 //        digitsLetters.put('9', new Character[]{'w', 'x', 'y', 'z'});
 //        LinkedList<Character[]> lettersFromInput = new LinkedList<>();
 //        LinkedList<String> combos = new LinkedList<>();
-//        for (int i = 0 ; i < digits.length(); i++) {
-//            lettersFromInput.add(digitsLetters.get(digits.charAt(i)));
-//        }
-//        for (int n = 0; n < lettersFromInput.size(); n++) {
-//            StringBuilder sb = new StringBuilder();
-//            for (int p = 0; p < )
-//        }
-//        // for every digit in input, create a new loop that appends its char and adds the string to list if it's the last letter in the input
-//        StringBuilder sb = new StringBuilder();
-//        addLetter(digits, sb, lettersFromInput, combos);
-//    }
 //
-//    // call this function for every letter
-//    public void addLetter(String digits, StringBuilder sb, LinkedList<Character[]> lettersFromInput, LinkedList<String> combos) {
-//        for (int i = 0; i < digits.length(); i++) {
-//            sb.append(lettersFromInput.get(setOfLetters)[variable]);
-//            if (i == digits.length() - 1) {
-//                combos.add(sb.toString());
-//            }
-//        }
-//        return combos;
+//
 //    }
 //}
