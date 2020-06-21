@@ -78,7 +78,8 @@ Given a binary number in String format, return the fewest number of operations i
   Append a 0. If the number ends in 0, it can be divided by 2. Take the substring from the beginning up to the end excluding the last digit. 
   Do a check at the beginning for leading 0s and remove them from the binary. 
 - Time and efficiency
-  - Time: O(time taken by contains() method of String object). If the string still contains a "1", the while block will execute. 
+  - Time: O(n). If the string still contains a "1", the while block will execute. [String.contains() time complexity](https://stackoverflow.com/questions/4089558/what-is-the-big-o-of-string-contains-in-java) 
+  varies on how it's implemented, and O(n) is an upper bound, which is orthogonal to best/average/worst case. 
   - Space: O(1). 
 
 ## Medium
