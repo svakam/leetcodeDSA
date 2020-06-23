@@ -1,13 +1,20 @@
 # LeetCode Data Structures & Algorithms
-Repo for all practice problems done on LeetCode. 
+Repo for all practice problems done on LeetCode and more. 
 
 ## Table of Contents
-- Easy
-  - Two Sum
-- Medium
-  - Add Two Numbers (LL)
-  - Longest Substring Without Repeating Characters
-- Hard
+- [Easy](#easy)
+  - [Two Sum](#two-sum)
+  - [Reverse Integer](#reverse-integer)
+  - [String Incrementer (non-LC)](#string-incrementer-non-lc)
+  - [Subtract Binary (non-LC)](#subtract-binary-non-lc)
+- [Medium](#medium)
+  - [Add Two Numbers: LL](#add-two-numbers-ll)
+  - [Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
+  - [Longest Palindromic Substring](#longest-palindromic-substring)
+  - [Zigzag Conversion](#zigzag-conversion)
+  - [Letter Combinations of a Phone Number](#letter-combinations-of-a-phone-number)
+  - [Find Largest Possible Value When Inserting '5' (non-LC)](#find-largest-value-possible-given-a-digit-to-append-non-lc)
+- [Hard](#hard)
 
 ## Easy
 ### Two Sum
@@ -56,7 +63,7 @@ Reverse a given integer. If the integer overflows, return 0.
     to `temp`. Knowing that `Integer.MAX_VALUE` is 2147483647, if `pop` is ever greater than 7, there is a potential to overflow if `rev == Integer.MAX_VALUE / 10`. Overflow will 
     also occur if `rev > Integer.MAX_VALUE`. 
     
-### String Incrementer (not-LC)
+### String Incrementer (non-LC)
 Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -> "ZABB", "ZZYZ" -> "ZZZA", "ZZZZ" -> "AAAAA"
 
 - My solution: carry vs. non carry
