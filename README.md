@@ -180,5 +180,31 @@ C . D . E
     - Explanation: Use Math.min(numRows, s.length()) to represent non-empty rows of the zigzag. Iterate through s from left to right, appending each character to appropriate row. The 
     row is tracked with current row and current direction variables. The current direction changes only when we moved up to the topmost row or down to the bottommost. 
   
+### Letter Combinations of a Phone Number
+Given a String of digits 2-9, and that each digit represents a set of letters seen on a traditional phone keypad, return all possible combinations of letters when associating each digit's 
+letters with another's. 
+
+Example: "23" -> "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"
+
+- First attempt: tracking each digit's current letter to append to a combination
+  - If 2 is associated with the character array "abc", 3 is associated with "def", and so on, appending characters to make sure each combination is unique requires functionality to 
+  keep track of which letter is being looked at for each digit. This is similar to incrementing a number and carrying over values when the max value of a unit is reached (i.e. carrying
+  the 1 over to the tens digit when 9 + 1 is executed, since 9 is the max value in the decimal system, 9 is reset to 0, and the 1 is carried). For example, in "23", when all letters 
+  of 3 are combined with 2 ("ad", "ae", "af"), 3 must be reset from "f" to "d" again to start combining with "b" to get "bd", "be", "bf". 
+
+- Approaches: time and efficiency
+  - My solution: tracking digit letters
+    - Time: O(3^n * 4^m), where n is the number of digits in the input that maps to 3 letters and m is the number of digits that map to 4 letters, and n + m is the total number of 
+    digits in the input. 
+    - Space: O(3^n * 4^m). The list of combinations will be 3^n * 4^m combinations long. 
+  - LC: backtracking
+    - Time: same as above
+    - Space: same as above
+    - Explanation: [Backtracking](https://en.wikipedia.org/wiki/Backtracking) is a general algorithm for finding solutions by exploring all possible candidates. If the candidate 
+    isn't a solution, the algorithm discards it by making some changes on the previous step (backtracking) and then trying again. The backtrack 
+    function `backtrack(combination, next_digits)` takes as arguments an ongoing combination and the next digits to check. If there are no more digits to check, the current 
+    combination is done. If there are more digits, iterate over the mapped letters, append to the combination, and proceed to the next digit. This solution is recursive. 
+
+
 
 ## Hard
