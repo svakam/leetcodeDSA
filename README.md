@@ -205,6 +205,9 @@ Example: "23" -> "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"
     function `backtrack(combination, next_digits)` takes as arguments an ongoing combination and the next digits to check. If there are no more digits to check, the current 
     combination is done. If there are more digits, iterate over the mapped letters, append to the combination, and proceed to the next digit. This solution is recursive. 
 
+### Find Largest Value Possible Given a Digit to Append (non-LC)
+Given an integer from -8000 to 8000, find the largest value possible by appending the digit "5" anywhere in the integer. 
 
+Example: 234 -> 5234, 625 -> 6525, 987 -> 9875, -995 -> -5995
 
 ## Hard
