@@ -1,13 +1,20 @@
 # LeetCode Data Structures & Algorithms
-Repo for all practice problems done on LeetCode. 
+Repo for all practice problems done on LeetCode and more. 
 
 ## Table of Contents
-- Easy
-  - Two Sum
-- Medium
-  - Add Two Numbers (LL)
-  - Longest Substring Without Repeating Characters
-- Hard
+- [Easy](#easy)
+  - [Two Sum](#two-sum)
+  - [Reverse Integer](#reverse-integer)
+  - [String Incrementer (non-LC)](#string-incrementer-non-lc)
+  - [Subtract Binary (non-LC)](#subtract-binary-non-lc)
+- [Medium](#medium)
+  - [Add Two Numbers: LL](#add-two-numbers-ll)
+  - [Longest Substring Without Repeating Characters](#longest-substring-without-repeating-characters)
+  - [Longest Palindromic Substring](#longest-palindromic-substring)
+  - [Zigzag Conversion](#zigzag-conversion)
+  - [Letter Combinations of a Phone Number](#letter-combinations-of-a-phone-number)
+  - [Find Largest Possible Value When Inserting '5' (non-LC)](#find-largest-value-possible-given-a-digit-to-append-non-lc)
+- [Hard](#hard)
 
 ## Easy
 ### Two Sum
@@ -56,7 +63,7 @@ Reverse a given integer. If the integer overflows, return 0.
     to `temp`. Knowing that `Integer.MAX_VALUE` is 2147483647, if `pop` is ever greater than 7, there is a potential to overflow if `rev == Integer.MAX_VALUE / 10`. Overflow will 
     also occur if `rev > Integer.MAX_VALUE`. 
     
-### String Incrementer
+### String Incrementer (non-LC)
 Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -> "ZABB", "ZZYZ" -> "ZZZA", "ZZZZ" -> "AAAAA"
 
 - My solution: carry vs. non carry
@@ -70,6 +77,17 @@ Given a String, increment it by 1. Example: "AB" -> "AC", "AZ" -> "BA", "ZABA" -
   is implemented for the final output, causing O(2n) ~ O(n).  
   - Space: O(n). The original String is immutable, thus an additional String copy is created for the output per n letters in the input. 
 
+### Subtract Binary (non-LC)
+Given a binary number in String format, return the fewest number of operations it takes to reduce it to 0.
+
+- My solution: string parsing
+  - If the number ends in 1, it can be subtracted by 1. Take the substring from the beginning up to the end excluding the last digit. 
+  Append a 0. If the number ends in 0, it can be divided by 2. Take the substring from the beginning up to the end excluding the last digit. 
+  Do a check at the beginning for leading 0s and remove them from the binary. 
+- Time and efficiency
+  - Time: O(n). If the string still contains a "1", the while block will execute. [String.contains() time complexity](https://stackoverflow.com/questions/4089558/what-is-the-big-o-of-string-contains-in-java) 
+  varies on how it's implemented, and O(n) is an upper bound, which is orthogonal to best/average/worst case. 
+  - Space: O(1). 
 
 ## Medium
 ### Add Two Numbers (LL)
@@ -169,5 +187,45 @@ C . D . E
     - Explanation: Use Math.min(numRows, s.length()) to represent non-empty rows of the zigzag. Iterate through s from left to right, appending each character to appropriate row. The 
     row is tracked with current row and current direction variables. The current direction changes only when we moved up to the topmost row or down to the bottommost. 
   
+### Letter Combinations of a Phone Number
+Given a String of digits 2-9, and that each digit represents a set of letters seen on a traditional phone keypad, return all possible combinations of letters when associating each digit's 
+letters with another's. 
+
+Example: "23" -> "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"
+
+- First attempt: tracking each digit's current letter to append to a combination
+  - If 2 is associated with the character array "abc", 3 is associated with "def", and so on, appending characters to make sure each combination is unique requires functionality to 
+  keep track of which letter is being looked at for each digit. This is similar to incrementing a number and carrying over values when the max value of a unit is reached (i.e. carrying
+  the 1 over to the tens digit when 9 + 1 is executed, since 9 is the max value in the decimal system, 9 is reset to 0, and the 1 is carried). For example, in "23", when all letters 
+  of 3 are combined with 2 ("ad", "ae", "af"), 3 must be reset from "f" to "d" again to start combining with "b" to get "bd", "be", "bf". 
+
+- Approaches: time and efficiency
+  - My solution: tracking digit letters
+    - Time: O(3^n * 4^m), where n is the number of digits in the input that maps to 3 letters and m is the number of digits that map to 4 letters, and n + m is the total number of 
+    digits in the input. 
+    - Space: O(3^n * 4^m). The list of combinations will be 3^n * 4^m combinations long. 
+  - LC: backtracking
+    - Time: same as above
+    - Space: same as above
+    - Explanation: [Backtracking](https://en.wikipedia.org/wiki/Backtracking) is a general algorithm for finding solutions by exploring all possible candidates. If the candidate 
+    isn't a solution, the algorithm discards it by making some changes on the previous step (backtracking) and then trying again. The backtrack 
+    function `backtrack(combination, next_digits)` takes as arguments an ongoing combination and the next digits to check. If there are no more digits to check, the current 
+    combination is done. If there are more digits, iterate over the mapped letters, append to the combination, and proceed to the next digit. This solution is recursive. 
+
+### Find Largest Value Possible Given a Digit to Append (non-LC)
+Given an integer from -8000 to 8000, find the largest value possible by appending the digit "5" anywhere in the integer. 
+
+Example: 234 -> 5234, 625 -> 6525, 987 -> 9875, -995 -> -5995
+
+- First attempt: parse input to char[], add 5, parse back to int and compare
+  - Parse the input into a String format. Create a char array of the number of digits in the input + 1, which makes room for the 5. Place 5 in every possible element while filling 
+  in the remaining with the input's digits in order. Parse the results back into an int and set it to the biggest value if it's the biggest one seen thus far. 
+  
+- Approach: time and efficiency
+  - Time: O(n^2) and O(n). One loop is conducted over the length of the integer for every possible element that 5 was placed in. 2 more inner loops start within, to loop over the 
+  length of the array to fill it with the input's digits, and over the array to parse it back into an int. Since the input will only be 4 digits long at most, O(n^2) should be 
+  insignificant enough to approximate to O(n). If the digits were unlimited, runtime would quickly get worse at around O(2n^2) or O(3n^2) ~ O(n^2). 
+  - Space: O(n). The char array is as long as the number of digits in the int, which can get at most 4 digits long, so O(4n) ~ O(n). Additionally, the char array is actually an array
+   of Character's, which are wrapper objects that take up more memory than their primitive counterparts. 
 
 ## Hard

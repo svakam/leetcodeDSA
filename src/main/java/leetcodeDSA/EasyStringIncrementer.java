@@ -1,5 +1,7 @@
 package leetcodeDSA;
 
+// not from LC
+// Given a String, return the string incremented by 1. "AB" + 1 -> "AC", "AZ" + 1 -> "BA"
 public class EasyStringIncrementer {
     public static String incrementer(String input) {
         StringBuilder sb = new StringBuilder();
