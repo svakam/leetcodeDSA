@@ -217,4 +217,15 @@ Given an integer from -8000 to 8000, find the largest value possible by appendin
 
 Example: 234 -> 5234, 625 -> 6525, 987 -> 9875, -995 -> -5995
 
+- First attempt: parse input to char[], add 5, parse back to int and compare
+  - Parse the input into a String format. Create a char array of the number of digits in the input + 1, which makes room for the 5. Place 5 in every possible element while filling 
+  in the remaining with the input's digits in order. Parse the results back into an int and set it to the biggest value if it's the biggest one seen thus far. 
+  
+- Approach: time and efficiency
+  - Time: O(n^2) and O(n). One loop is conducted over the length of the integer for every possible element that 5 was placed in. 2 more inner loops start within, to loop over the 
+  length of the array to fill it with the input's digits, and over the array to parse it back into an int. Since the input will only be 4 digits long at most, O(n^2) should be 
+  insignificant enough to approximate to O(n). If the digits were unlimited, runtime would quickly get worse at around O(2n^2) or O(3n^2) ~ O(n^2). 
+  - Space: O(n). The char array is as long as the number of digits in the int, which can get at most 4 digits long, so O(4n) ~ O(n). Additionally, the char array is actually an array
+   of Character's, which are wrapper objects that take up more memory than their primitive counterparts. 
+
 ## Hard
