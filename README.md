@@ -14,6 +14,7 @@ Repo for all practice problems done on LeetCode and more.
   - [Zigzag Conversion](#zigzag-conversion)
   - [Letter Combinations of a Phone Number](#letter-combinations-of-a-phone-number)
   - [Find Largest Possible Value When Inserting '5' (non-LC)](#find-largest-value-possible-given-a-digit-to-append-non-lc)
+  - [Container With Most Water](#container-with-most-water)
 - [Hard](#hard)
 
 ## Easy
@@ -227,5 +228,24 @@ Example: "23" -> "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"
     isn't a solution, the algorithm discards it by making some changes on the previous step (backtracking) and then trying again. The backtrack 
     function `backtrack(combination, next_digits)` takes as arguments an ongoing combination and the next digits to check. If there are no more digits to check, the current 
     combination is done. If there are more digits, iterate over the mapped letters, append to the combination, and proceed to the next digit. This solution is recursive. 
+
+### Container With Most Water
+Given an integer array that represents the heights (y-values) of bars on a graph, and each element's ith position in the array representing the distance from 0 on the x-axis, 
+find the largest area possible produced by a set of 2 bars on the graph. 
+
+- First attempt: brute force
+  - The 2 lines are represented by their value's positions in the array (i and j) and their values (height[i], height[j]). Find the minimum height of any combination of lines and multiply
+  that by the difference of i and j to get the area. Compare with the largest area so far for each iteration. Return the largest area. 
+
+- Approaches: time and efficiency
+  - My solution: brute force
+    - Time: O(n^2). For n elements, every other element is looked at n-1 times, but combinations of elements are repeated. O(n * (n - 1) / 2) ~ O(n^2). 
+    - Space: O(1). 
+  - LC: two point approach
+    - Time: O(n). Only pass of the array is made per n elements. 
+    - Space: O(1). 
+    - Explanation: start with i and j at the opposite ends; it's more likely that the area is largest when i and j are farther apart. Alternatively to brute forcing the area calculations, 
+    increment i and decrement j. The element that increments or decrements is the one that is less than the other element. This ensures that only the largest height of the two is used 
+    for the next calculation, since larger heights are more likely to help yield the largest area. Calculate the area with Math.max() of the previous largest area and the new possible area. 
 
 ## Hard
