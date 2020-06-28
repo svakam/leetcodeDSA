@@ -1,12 +1,12 @@
 package leetcodeDSA.structures;
 
 public interface LinkedListMethods {
-    void addFirst(Node newNode);
-    void addLast(Node newNode);
-    void addAtIndex(Node newNode, int index);
+    void addFirst(int value);
+    void addLast(int value);
+    void addAtIndex(int value, int index);
     Node removeFirst();
     Node removeLast();
-    void printValues();
+    String printValues();
     Node peekHead();
     Node peekTail();
     Node peekAtIndex(int index);

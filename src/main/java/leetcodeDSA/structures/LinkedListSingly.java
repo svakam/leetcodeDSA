@@ -6,7 +6,8 @@ public class LinkedListSingly implements LinkedListMethods {
     Node head = null;
     Node current;
 
-    public void addFirst(Node newNode) {
+    public void addFirst(int value) {
+        Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
         } else {
@@ -17,11 +18,11 @@ public class LinkedListSingly implements LinkedListMethods {
         }
     }
 
-    public void addLast(Node newNode) {
+    public void addLast(int value) {
+        Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
         } else {
-            current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -30,18 +31,19 @@ public class LinkedListSingly implements LinkedListMethods {
         }
     }
 
-    public void addAtIndex(Node newNode, int index) {
-        if (head == null && index > 0) {
-            throw new IllegalArgumentException("Can't add at specified index: linked list is empty"); // is exception type valid to use here?
-        } else if (head != null) {
+    public void addAtIndex(int value, int index) {
+        Node newNode = new Node(value);
+        if (head == null && index > 0) throw new IllegalArgumentException("Can't add at specified index: linked list is empty");
+        if (head != null) {
             if (index == 0) {
-                addFirst(newNode);
+                addFirst(value);
             } else {
                 current = head;
-                for (int i = 0; i < index; i++) {
+                for (int i = 0; i < index - 1; i++) {
                     current = current.next;
                 }
-                // tbc
+                newNode.next = current.next;
+                current.next = newNode;
             }
         }
     }
@@ -70,18 +72,21 @@ public class LinkedListSingly implements LinkedListMethods {
         return temp;
     }
 
-    public void printValues() {
+    public String printValues() {
+        StringBuilder s = new StringBuilder();
         if (head == null) {
-            System.out.println("Linked list is empty");
+            return "Linked list is empty";
         } else {
             current = head;
             int counter = 0;
             while (current != null) {
-                System.out.format("node %d: %d%n", counter + 1, current.value);
+                s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
                 current = current.next;
+                counter++;
             }
             current = null;
         }
+        return s.toString();
     }
 
     public Node peekHead() {

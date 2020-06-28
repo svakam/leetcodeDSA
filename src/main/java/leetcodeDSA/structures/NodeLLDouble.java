@@ -1,10 +1,10 @@
 package leetcodeDSA.structures;
 
 public class NodeLLDouble extends Node {
-    NodeLLDouble pointerTwo;
+    NodeLLDouble nextTwo;
 
-    NodeLLDouble(int value, Node pointerOne, NodeLLDouble pointerTwo) {
-        super(value, pointerOne);
-        this.pointerTwo = pointerTwo;
+    NodeLLDouble(int value, Node next, NodeLLDouble nextTwo) {
+        super(value, next);
+        this.nextTwo = nextTwo;
     }
 }
