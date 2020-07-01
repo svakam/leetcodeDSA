@@ -25,6 +25,7 @@ public class LinkedListSingly implements LinkedListMethods {
         } else {
             while (current.next != null) {
                 current = current.next;
+                System.out.println(current.value);
             }
             current.next = newNode;
             current = null;
@@ -45,6 +46,7 @@ public class LinkedListSingly implements LinkedListMethods {
                 newNode.next = current.next;
                 current.next = newNode;
             }
+            current = null;
         }
     }
 
@@ -89,18 +91,19 @@ public class LinkedListSingly implements LinkedListMethods {
         return s.toString();
     }
 
-    public Node peekHead() {
+    public void peekHead() {
         if (head == null) throw new NullPointerException("Can't peek: linked list is empty");
-        return head;
+        System.out.println(head.value);
     }
 
-    public Node peekTail() {
+    public void peekTail() {
         if (head == null) throw new NullPointerException("Can't peek: linked list is empty");
         current = head;
         while (current.next != null) {
             current = current.next;
         }
-        return current;
+        System.out.println("Tail is: " + current.value);
+        current = null;
     }
 
     public Node peekAtIndex(int index) {

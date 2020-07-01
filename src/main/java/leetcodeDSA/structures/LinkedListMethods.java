@@ -7,8 +7,8 @@ public interface LinkedListMethods {
     Node removeFirst();
     Node removeLast();
     String printValues();
-    Node peekHead();
-    Node peekTail();
+    void peekHead();
+    void peekTail();
     Node peekAtIndex(int index);
     int size();
     boolean isEmpty();
