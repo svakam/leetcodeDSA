@@ -37,8 +37,43 @@ public class StructureLLSinglyTest {
         ll.addAtIndex(5, 1);
         assertEquals("Node 0: 3\nNode 1: 5\nNode 2: 2\nNode 3: 4\n", ll.printValues());
 
-//        assertFalse(ll.isEmpty());
-//
-//        assertTrue(new LinkedListSingly().isEmpty());
+        ll.addAtIndex(6, 16);
+    }
+
+    @Test
+    public void empty() {
+        assertTrue(ll.isEmpty());
+
+        ll.addFirst(2);
+        assertEquals("Node 0: 2\n", ll.printValues());
+
+        assertFalse(ll.isEmpty());
+
+        assertTrue(new LinkedListSingly().isEmpty());
+    }
+
+    @Test
+    public void size() {
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        assertEquals(3, ll.size());
+    }
+
+    @Test
+    public void peek() {
+        ll.addLast(5);
+        ll.addLast(6);
+        ll.addLast(7);
+        ll.peekHead();
+    }
+
+    @Test
+    public void remove() {
+        ll.addAtIndex(10, 0);
+        ll.addLast(20);
+        ll.addFirst(30);
+        assertEquals(30, ll.removeFirst().getValue());
+        assertEquals(20, ll.removeLast().getValue());
     }
 }

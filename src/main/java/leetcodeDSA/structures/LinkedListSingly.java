@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 public class LinkedListSingly implements LinkedListMethods {
     Node head = null;
-    Node current;
 
     public void addFirst(int value) {
+        Node current;
         Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
@@ -19,20 +19,21 @@ public class LinkedListSingly implements LinkedListMethods {
     }
 
     public void addLast(int value) {
+        Node current;
         Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
         } else {
+            current = head;
             while (current.next != null) {
                 current = current.next;
-                System.out.println(current.value);
             }
             current.next = newNode;
-            current = null;
         }
     }
 
     public void addAtIndex(int value, int index) {
+        Node current;
         Node newNode = new Node(value);
         if (head == null && index > 0) throw new IllegalArgumentException("Can't add at specified index: linked list is empty");
         if (head != null) {
@@ -54,23 +55,27 @@ public class LinkedListSingly implements LinkedListMethods {
         if (head == null) {
             System.out.println("Can't remove node: linked list is empty"); // sout or exception or?
         } else {
+            Node current;
             current = head;
             head = current.next;
             current.next = null;
+            return current;
         }
-        return current;
+        return null;
     }
 
     public Node removeLast() {
         if (head == null) throw new IllegalArgumentException("Can't remove node: linked list is empty"); // sout or exception or?
         Node temp;
-        current = head;
+        Node current = head;
         while (current.next.next != null) {
             current = current.next;
         }
         temp = current;
         temp = temp.next;
+        System.out.println(temp.value);
         current.next = null;
+        System.out.println(current.value);
         return temp;
     }
 
@@ -79,7 +84,7 @@ public class LinkedListSingly implements LinkedListMethods {
         if (head == null) {
             return "Linked list is empty";
         } else {
-            current = head;
+            Node current = head;
             int counter = 0;
             while (current != null) {
                 s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
