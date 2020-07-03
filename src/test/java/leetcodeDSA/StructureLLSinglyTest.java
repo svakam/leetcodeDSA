@@ -65,7 +65,9 @@ public class StructureLLSinglyTest {
         ll.addLast(5);
         ll.addLast(6);
         ll.addLast(7);
-        ll.peekHead();
+        assertEquals(5, ll.peekHead().getValue());
+        assertEquals(7, ll.peekTail().getValue());
+        assertEquals(6, ll.peekAtIndex(1).getValue());
     }
 
     @Test

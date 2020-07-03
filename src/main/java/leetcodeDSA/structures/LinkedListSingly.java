@@ -14,7 +14,6 @@ public class LinkedListSingly implements LinkedListMethods {
             current = head;
             head = newNode;
             newNode.next = current;
-            current = null;
         }
     }
 
@@ -90,29 +89,27 @@ public class LinkedListSingly implements LinkedListMethods {
                 current = current.next;
                 counter++;
             }
-            current = null;
         }
         return s.toString();
     }
 
-    public void peekHead() {
+    public Node peekHead() {
         if (head == null) throw new NullPointerException("Can't peek: linked list is empty");
-        System.out.println(head.value);
+        return head;
     }
 
-    public void peekTail() {
+    public Node peekTail() {
         if (head == null) throw new NullPointerException("Can't peek: linked list is empty");
-        current = head;
+        Node current = head;
         while (current.next != null) {
             current = current.next;
         }
-        System.out.println("Tail is: " + current.value);
-        current = null;
+        return current;
     }
 
     public Node peekAtIndex(int index) {
         if (head == null) throw new NullPointerException("Can't peek: linked list is empty");
-        current = head;
+        Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
@@ -123,7 +120,7 @@ public class LinkedListSingly implements LinkedListMethods {
         if (head == null) {
             return 0;
         }
-        current = head;
+        Node current = head;
         int counter = 0;
         while (current != null) { // current.next query can falsely increment counter by an additional 1
             counter++;
