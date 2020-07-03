@@ -47,7 +47,6 @@ public class LinkedListSingly implements LinkedListMethods {
                 newNode.next = current.next;
                 current.next = newNode;
             }
-            current = null;
         }
     }
 
