@@ -20,4 +20,7 @@ public class Node {
     public int getValue() {
         return value;
     }
+    public Node getNext() {
+        return next;
+    }
 }

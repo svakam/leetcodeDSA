@@ -46,6 +46,7 @@ public class LinkedListSingly implements LinkedListMethods {
                 newNode.next = current.next;
                 current.next = newNode;
             }
+            // also test for index out of bounds
         }
     }
 
