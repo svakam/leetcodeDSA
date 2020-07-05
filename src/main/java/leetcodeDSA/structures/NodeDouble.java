@@ -1,6 +1,7 @@
 package leetcodeDSA.structures;
 
 public class NodeDouble extends Node {
+    NodeDouble next;
     NodeDouble previous;
 
     NodeDouble(int value) {
@@ -8,7 +9,8 @@ public class NodeDouble extends Node {
     }
 
     NodeDouble(int value, NodeDouble next, NodeDouble previous) {
-        super(value, next);
+        super(value);
+        this.next = next;
         this.previous = previous;
     }
 

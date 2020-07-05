@@ -5,6 +5,7 @@ import leetcodeDSA.structures.LinkedListSingly;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.rules.*;
 
 public class StructureLLTest {
     @Test
@@ -26,8 +27,9 @@ public class StructureLLTest {
 
     @Test
     public void add() {
-        assertEquals("Linked list is empty", ll.printValues());
-        assertEquals("Linked list is empty", lld.printValues());
+        
+        assertThrows("Linked list is empty", ll.printValues());
+        assertThrows("Linked list is empty", lld.printValues());
 
         ll.addFirst(2);
         assertEquals("Node 0: 2\n", ll.printValues());

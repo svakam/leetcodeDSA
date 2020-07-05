@@ -42,6 +42,7 @@ public class LinkedListSingly implements LinkedListMethods {
                 current = head;
                 for (int i = 0; i < index - 1; i++) {
                     current = current.next;
+                    if (current == null) throw new IllegalArgumentException("Can't add at specified index: linked list is longer than index provided");
                 }
                 newNode.next = current.next;
                 current.next = newNode;
@@ -51,16 +52,11 @@ public class LinkedListSingly implements LinkedListMethods {
     }
 
     public Node removeFirst() {
-        if (head == null) {
-            System.out.println("Can't remove node: linked list is empty"); // sout or exception or?
-        } else {
-            Node current;
-            current = head;
-            head = current.next;
-            current.next = null;
-            return current;
-        }
-        return null;
+        if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
+        Node temp = head;
+        head = temp.next;
+        temp.next = null;
+        return temp;
     }
 
     public Node removeLast() {
@@ -79,17 +75,14 @@ public class LinkedListSingly implements LinkedListMethods {
     }
 
     public String printValues() {
+        if (head == null) throw new NullPointerException("Can't print values: linked list is empty");
         StringBuilder s = new StringBuilder();
-        if (head == null) {
-            return "Linked list is empty";
-        } else {
-            Node current = head;
-            int counter = 0;
-            while (current != null) {
-                s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
-                current = current.next;
-                counter++;
-            }
+        Node current = head;
+        int counter = 0;
+        while (current != null) {
+            s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
+            current = current.next;
+            counter++;
         }
         return s.toString();
     }
