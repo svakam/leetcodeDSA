@@ -13,8 +13,4 @@ public class NodeDouble extends Node {
         this.next = next;
         this.previous = previous;
     }
-
-    public NodeDouble getPrevious() {
-        return previous;
-    }
 }

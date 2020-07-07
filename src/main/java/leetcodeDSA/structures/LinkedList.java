@@ -1,7 +1,6 @@
 package leetcodeDSA.structures;
 
 public abstract class LinkedList implements LinkedListMethods {
-
     abstract public void addFirst(int value);
     abstract public void addLast(int value);
     abstract public void addAtIndex(int value, int index);

@@ -1,6 +1,8 @@
 package leetcodeDSA.structures;
 
-public interface LinkedListMethods {
+import leetcodeDSA.structures.Node;
+
+interface LinkedListMethods {
     void addFirst(int value);
     void addLast(int value);
     void addAtIndex(int value, int index);

@@ -53,16 +53,16 @@ public class LinkedListSingly extends LinkedList {
 
     public Node removeLast() {
         if (head == null) throw new IllegalArgumentException("Can't remove node: linked list is empty"); // sout or exception or?
-        Node temp;
         Node current = head;
-        while (current.next.next != null) {
+        while (current.next != null) {
             current = current.next;
         }
-        temp = current;
-        temp = temp.next;
-        System.out.println(temp.value);
+        Node temp = current;
+        current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
         current.next = null;
-        System.out.println(current.value);
         return temp;
     }
 

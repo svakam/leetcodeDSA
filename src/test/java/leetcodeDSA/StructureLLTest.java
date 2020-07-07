@@ -3,10 +3,8 @@ package leetcodeDSA;
 import leetcodeDSA.structures.LinkedListDoubly;
 import leetcodeDSA.structures.LinkedListSingly;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.rules.*;
 
 public class StructureLLTest {
     @Test
