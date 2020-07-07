@@ -6,7 +6,7 @@ public interface LinkedListMethods {
     void addAtIndex(int value, int index);
     Node removeFirst();
     Node removeLast();
-    String printValues();
+    String printValues() throws ClassNotFoundException;
     Node peekHead();
     Node peekTail();
     Node peekAtIndex(int index);

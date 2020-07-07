@@ -3,6 +3,7 @@ package leetcodeDSA;
 import leetcodeDSA.structures.LinkedListDoubly;
 import leetcodeDSA.structures.LinkedListSingly;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.rules.*;
@@ -27,9 +28,9 @@ public class StructureLLTest {
 
     @Test
     public void add() {
-        
-        assertThrows("Linked list is empty", ll.printValues());
-        assertThrows("Linked list is empty", lld.printValues());
+//        assertEquals(e.expect(NullPointerException.class), ll.printValues());
+//        assertThrows("Linked list is empty", ll.printValues());
+//        assertThrows("Linked list is empty", lld.printValues());
 
         ll.addFirst(2);
         assertEquals("Node 0: 2\n", ll.printValues());
@@ -52,8 +53,8 @@ public class StructureLLTest {
         assertEquals("Node 0: 3\nNode 1: 5\nNode 2: 2\nNode 3: 4\n", lld.printValues());
 
         // need test for exception
-        ll.addAtIndex(6, 16);
-        lld.addAtIndex(6, 16);
+//        ll.addAtIndex(6, 16);
+//        lld.addAtIndex(6, 16);
     }
 
     @Test
@@ -76,11 +77,15 @@ public class StructureLLTest {
     @Test
     public void size() {
         ll.addLast(2);
+        assertEquals(1, ll.size());
         ll.addLast(3);
+        assertEquals(2, ll.size());
         ll.addLast(4);
         assertEquals(3, ll.size());
         lld.addLast(2);
+        assertEquals(1, lld.size());
         lld.addLast(3);
+        assertEquals(2, lld.size());
         lld.addLast(4);
         assertEquals(3, lld.size());
     }
@@ -92,13 +97,21 @@ public class StructureLLTest {
         ll.addLast(7);
         assertEquals(5, ll.peekHead().getValue());
         assertEquals(7, ll.peekTail().getValue());
+        assertEquals(5, ll.peekAtIndex(0).getValue());
         assertEquals(6, ll.peekAtIndex(1).getValue());
+        assertEquals(7, ll.peekAtIndex(2).getValue());
         lld.addLast(5);
         lld.addLast(6);
         lld.addLast(7);
         assertEquals(5, lld.peekHead().getValue());
         assertEquals(7, lld.peekTail().getValue());
+        assertEquals(5, lld.peekAtIndex(0).getValue());
         assertEquals(6, lld.peekAtIndex(1).getValue());
+        assertEquals(7, lld.peekAtIndex(2).getValue());
+        lld.addLast(9);
+        assertEquals(9, lld.peekAtIndex(3).getValue());
+        lld.addFirst(10);
+        assertEquals(10, lld.peekAtIndex(0).getValue());
     }
 
     @Test

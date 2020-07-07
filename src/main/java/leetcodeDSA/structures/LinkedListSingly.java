@@ -1,29 +1,22 @@
 package leetcodeDSA.structures;
 
-import java.util.LinkedList;
-
-public class LinkedListSingly implements LinkedListMethods {
-    Node head = null;
+public class LinkedListSingly extends LinkedList {
+    Node head;
 
     public void addFirst(int value) {
-        Node current;
         Node newNode = new Node(value);
-        if (head == null) {
-            head = newNode;
-        } else {
-            current = head;
-            head = newNode;
-            newNode.next = current;
+        if (head != null) {
+            newNode.next = head;
         }
+        head = newNode;
     }
 
     public void addLast(int value) {
-        Node current;
         Node newNode = new Node(value);
         if (head == null) {
             head = newNode;
         } else {
-            current = head;
+            Node current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -32,14 +25,13 @@ public class LinkedListSingly implements LinkedListMethods {
     }
 
     public void addAtIndex(int value, int index) {
-        Node current;
         Node newNode = new Node(value);
         if (head == null && index > 0) throw new IllegalArgumentException("Can't add at specified index: linked list is empty");
         if (head != null) {
             if (index == 0) {
                 addFirst(value);
             } else {
-                current = head;
+                Node current = head;
                 for (int i = 0; i < index - 1; i++) {
                     current = current.next;
                     if (current == null) throw new IllegalArgumentException("Can't add at specified index: linked list is longer than index provided");
