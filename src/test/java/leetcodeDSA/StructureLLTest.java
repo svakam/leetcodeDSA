@@ -119,6 +119,7 @@ public class StructureLLTest {
         ll.addFirst(30);
         assertEquals(30, ll.removeFirst().getValue());
         assertEquals(20, ll.removeLast().getValue());
+        assertEquals(10, ll.removeAtIndex(0).getValue());
         lld.addAtIndex(10, 0);
         lld.addLast(20);
         lld.addFirst(30);

@@ -1,5 +1,5 @@
 # LeetCode Data Structures & Algorithms
-Repo for all practice problems done on LeetCode and more. Also contains data structures in the `structures` subpackage. 
+Repo for all practice problems done on LeetCode and more. Also contains data structures in the `structures` [subpackage](https://github.com/svakam/leetcodeDSA/tree/master/src/main/java/leetcodeDSA/structures). 
 
 ## Table of Contents
 - [Easy](#easy)

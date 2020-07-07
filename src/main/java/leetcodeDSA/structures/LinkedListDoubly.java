@@ -5,21 +5,18 @@ public class LinkedListDoubly extends LinkedList {
     NodeDouble tail;
 
     public int size() {
-        if (head == tail) return 1;
-        NodeDouble currentFront = head;
-        NodeDouble currentBack = tail;
-        int i = 0;
-        while (true) {
-            if (currentFront.next == currentBack) {
-                return i + 2;
-            }
-            if (currentFront == currentBack) {
-                return i + 1;
-            }
-            currentFront = currentFront.next;
-            currentBack = currentBack.previous;
-            i += 2;
+        return this.size;
+    }
+
+    public int recalibrateSize() {
+        Node current = head;
+        int counter = 0;
+        while (current != null) {
+            current = current.next;
+            counter++;
         }
+        this.size = counter;
+        return this.size;
     }
 
     public void addFirst(int value) {
@@ -31,6 +28,7 @@ public class LinkedListDoubly extends LinkedList {
             newNode.next.previous = newNode;
         }
         head = newNode;
+        this.size++;
     }
 
     public void addLast(int value) {
@@ -44,6 +42,7 @@ public class LinkedListDoubly extends LinkedList {
             temp.next = newNode;
             newNode.previous = temp;
         }
+        this.size++;
     }
 
     public void addAtIndex(int value, int index) {
@@ -82,13 +81,15 @@ public class LinkedListDoubly extends LinkedList {
                 newNode.next = temp;
             }
         }
+        this.size++;
     }
 
-    public Node removeFirst() {
+    public NodeDouble removeFirst() {
         if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
         NodeDouble temp = head;
         head = temp.next;
         temp.next = null;
+        this.size--;
         return temp;
     }
 
@@ -97,7 +98,13 @@ public class LinkedListDoubly extends LinkedList {
         NodeDouble temp = tail;
         tail = temp.previous;
         temp.next = null;
+        this.size--;
         return temp;
+    }
+
+    public NodeDouble removeAtIndex(int index) {
+        if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
+        return head;
     }
 
     public String printValues() {
