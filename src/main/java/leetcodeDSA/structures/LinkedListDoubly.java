@@ -1,24 +1,11 @@
 package leetcodeDSA.structures;
 
-public class LinkedListDoubly extends LinkedList {
+public class LinkedListDoubly extends LinkedListSingly {
     NodeDouble head;
     NodeDouble tail;
+    NodeDouble current;
 
-    public int size() {
-        return this.size;
-    }
-
-    public int recalibrateSize() {
-        Node current = head;
-        int counter = 0;
-        while (current != null) {
-            current = current.next;
-            counter++;
-        }
-        this.size = counter;
-        return this.size;
-    }
-
+    @Override
     public void addFirst(int value) {
         NodeDouble newNode = new NodeDouble(value);
         if (head == null) {
@@ -31,6 +18,7 @@ public class LinkedListDoubly extends LinkedList {
         this.size++;
     }
 
+    @Override
     public void addLast(int value) {
         NodeDouble newNode = new NodeDouble(value);
         if (head == null) {
@@ -45,6 +33,7 @@ public class LinkedListDoubly extends LinkedList {
         this.size++;
     }
 
+    @Override
     public void addAtIndex(int value, int index) {
         NodeDouble newNode = new NodeDouble(value);
         if (index < ((size() - 1) / 2)) {
@@ -84,15 +73,7 @@ public class LinkedListDoubly extends LinkedList {
         this.size++;
     }
 
-    public NodeDouble removeFirst() {
-        if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
-        NodeDouble temp = head;
-        head = temp.next;
-        temp.next = null;
-        this.size--;
-        return temp;
-    }
-
+    @Override
     public NodeDouble removeLast() {
         if (tail == null) throw new NullPointerException("Can't remove node: linked list is empty");
         NodeDouble temp = tail;
@@ -102,9 +83,25 @@ public class LinkedListDoubly extends LinkedList {
         return temp;
     }
 
+    @Override
     public NodeDouble removeAtIndex(int index) {
         if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
-        return head;
+        NodeDouble current;
+        if (index < (size - 1) / 2 || index == (size - 1) / 2) {
+            current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size; i >= index; i--) {
+                current = current.previous;
+            }
+        }
+        current.previous.next = current.next;
+        current.next = null;
+        this.size--;
+        return current;
     }
 
     public String printValues() {

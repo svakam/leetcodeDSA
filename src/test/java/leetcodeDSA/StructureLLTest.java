@@ -86,6 +86,8 @@ public class StructureLLTest {
         assertEquals(2, lld.size());
         lld.addLast(4);
         assertEquals(3, lld.size());
+        lld.addLast(5);
+        assertEquals(4, lld.size());
     }
 
     @Test
@@ -124,6 +126,7 @@ public class StructureLLTest {
         lld.addLast(20);
         lld.addFirst(30);
         assertEquals(30, lld.removeFirst().getValue());
+        assertEquals(10, lld.removeAtIndex(1).getValue());
         assertEquals(20, lld.removeLast().getValue());
     }
 }

@@ -12,6 +12,7 @@ public abstract class LinkedList implements LinkedListMethods {
     abstract public void addAtIndex(int value, int index);
     abstract public Node removeFirst();
     abstract public Node removeLast();
+    abstract public Node removeAtIndex(int index);
     abstract public String printValues() throws ClassNotFoundException;
     abstract public Node peekHead();
     abstract public Node peekTail();

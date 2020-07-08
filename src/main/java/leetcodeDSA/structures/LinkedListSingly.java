@@ -2,6 +2,7 @@ package leetcodeDSA.structures;
 
 public class LinkedListSingly extends LinkedList {
     Node head;
+    Node current;
 
     public void addFirst(int value) {
         Node newNode = new Node(value);
@@ -17,7 +18,7 @@ public class LinkedListSingly extends LinkedList {
         if (head == null) {
             head = newNode;
         } else {
-            Node current = head;
+            current = head;
             while (current.next != null) {
                 current = current.next;
             }
@@ -48,17 +49,12 @@ public class LinkedListSingly extends LinkedList {
     }
 
     public Node removeFirst() {
-        if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
-        if (head.next == null) {
-            Node temp = head;
-            head = null;
-            return temp;
-        }
-        Node temp = head;
-        head = temp.next;
-        temp.next = null;
+        if (this.head == null) throw new NullPointerException("Can't remove node: linked list is empty");
+        this.current = head;
+        head = this.current.next;
+        this.current.next = null;
         this.size--;
-        return temp;
+        return this.current;
     }
 
     public Node removeLast() {
@@ -145,10 +141,10 @@ public class LinkedListSingly extends LinkedList {
     }
 
     public int recalibrateSize() {
-        Node current = head;
+        this.current = this.head;
         int counter = 0;
-        while (current != null) {
-            current = current.next;
+        while (this.current != null) {
+            this.current = this.current.next;
             counter++;
         }
         this.size = counter;
@@ -156,6 +152,6 @@ public class LinkedListSingly extends LinkedList {
     }
 
     public boolean isEmpty() {
-        return head == null;
+        return this.head == null;
     }
 }
