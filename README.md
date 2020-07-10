@@ -106,6 +106,18 @@ Example: 234 -> 5234, 625 -> 6525, 987 -> 9875, -995 -> -5995
   - Space: O(n). The char array is as long as the number of digits in the int, which can get at most 4 digits long, so O(4n) ~ O(n). Additionally, the char array is actually an array
    of Character's, which are wrapper objects that take up more memory than their primitive counterparts. 
 
+### String Compression (non-LC)
+Given a String input, compress the string such that the new string shows consecutively repeated characters once with the number of times it was repeated. 
+
+Example: "aaaaaabbbcc" -> "a6b3c2"
+
+- First attempt: do a one-pass iteration over the string. If a current character is equal to the reference character, increment the count of the repeated character. If not, add 
+the repeated character to the current string along with its count and move onto the next char. Repeat until end of string. 
+
+- Approach: time and efficiency
+  - Time: O(n). At least one full iteration of the string is required to examine all n letters. 
+  - Space: O(n). Worst case scenario, all characters are unique and never repeat adjacently, leading to O(2n) -> O(n). 
+
 ## Medium
 ### Add Two Numbers (LL)
 Given two LLs representing the digits of two reversed non-negative integers, add the integers together and return as a LL. The final LL can be reversed. 

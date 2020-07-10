@@ -4,8 +4,8 @@ package leetcodeDSA;
 public class EasyStrCompression {
     public String strCompression(String s) {
         if (s.length() == 0) return null;
-        StringBuilder sb = new StringBuilder();
         if (s.length() == 1) return s;
+        StringBuilder sb = new StringBuilder();
 
         int strIndex = 0;
         int repeatCount = 0;
