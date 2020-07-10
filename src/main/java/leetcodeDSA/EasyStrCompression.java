@@ -5,22 +5,30 @@ public class EasyStrCompression {
     public String strCompression(String s) {
         if (s.length() == 0) return null;
         StringBuilder sb = new StringBuilder();
-        if (s.length() == 1) return sb.append(s).append(1).toString();
+        if (s.length() == 1) return s;
 
         int strIndex = 0;
         int repeatCount = 0;
         int strLen = s.length();
         char repeatedChar = s.charAt(0);
+        boolean completedAppend = false;
 
-        while (strIndex < strLen - 1) {
-            if (s.charAt(strIndex) == repeatedChar) {
+        while (strIndex < strLen) {
+            char currentChar = s.charAt(strIndex);
+            if (currentChar == repeatedChar) {
                 repeatCount++;
+                completedAppend = false;
             } else {
                 sb.append(repeatedChar).append(repeatCount);
+                repeatCount = 1;
                 repeatedChar = s.charAt(strIndex);
-                repeatCount = 0;
+                completedAppend = true;
             }
             strIndex++;
+        }
+
+        if (!completedAppend) {
+            sb.append(repeatedChar).append(repeatCount);
         }
 
         if (sb.toString().length() >= strLen) return s;
