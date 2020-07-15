@@ -31,24 +31,24 @@ public class StructureLLTest {
 //        assertThrows("Linked list is empty", lld.printValues());
 
         ll.addFirst(2);
-        assertEquals("Node 0: 2\n", ll.printValues());
+        assertEquals("2 ", ll.printValues());
         lld.addFirst(2);
-        assertEquals("Node 0: 2\n", lld.printValues());
+        assertEquals("2 ", lld.printValues());
 
         ll.addFirst(3);
-        assertEquals("Node 0: 3\nNode 1: 2\n", ll.printValues());
+        assertEquals("3 2 ", ll.printValues());
         lld.addFirst(3);
-        assertEquals("Node 0: 3\nNode 1: 2\n", lld.printValues());
+        assertEquals("3 2 ", lld.printValues());
 
         ll.addLast(4);
-        assertEquals("Node 0: 3\nNode 1: 2\nNode 2: 4\n", ll.printValues());
+        assertEquals("3 2 4 ", ll.printValues());
         lld.addLast(4);
-        assertEquals("Node 0: 3\nNode 1: 2\nNode 2: 4\n", lld.printValues());
+        assertEquals("3 2 4 ", lld.printValues());
 
         ll.addAtIndex(5, 1);
-        assertEquals("Node 0: 3\nNode 1: 5\nNode 2: 2\nNode 3: 4\n", ll.printValues());
+        assertEquals("3 5 2 4 ", ll.printValues());
         lld.addAtIndex(5, 1);
-        assertEquals("Node 0: 3\nNode 1: 5\nNode 2: 2\nNode 3: 4\n", lld.printValues());
+        assertEquals("3 5 2 4 ", lld.printValues());
 
         // need test for exception
 //        ll.addAtIndex(6, 16);
@@ -61,9 +61,9 @@ public class StructureLLTest {
         assertTrue(lld.isEmpty());
 
         ll.addFirst(2);
-        assertEquals("Node 0: 2\n", ll.printValues());
+        assertEquals("2 ", ll.printValues());
         lld.addFirst(2);
-        assertEquals("Node 0: 2\n", lld.printValues());
+        assertEquals("2 ", lld.printValues());
 
         assertFalse(ll.isEmpty());
         assertFalse(lld.isEmpty());
@@ -119,12 +119,14 @@ public class StructureLLTest {
         ll.addAtIndex(10, 0);
         ll.addLast(20);
         ll.addFirst(30);
+        assertEquals("30 10 20 ", ll.printValues());
         assertEquals(30, ll.removeFirst().getValue());
         assertEquals(20, ll.removeLast().getValue());
         assertEquals(10, ll.removeAtIndex(0).getValue());
         lld.addAtIndex(10, 0);
         lld.addLast(20);
         lld.addFirst(30);
+        assertEquals("30 10 20 ", lld.printValues());
         assertEquals(30, lld.removeFirst().getValue());
         assertEquals(10, lld.removeAtIndex(1).getValue());
         assertEquals(20, lld.removeLast().getValue());

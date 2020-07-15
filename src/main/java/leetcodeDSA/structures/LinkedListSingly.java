@@ -31,30 +31,32 @@ public class LinkedListSingly extends LinkedList {
         Node newNode = new Node(value);
         if (index < 0) throw new IllegalArgumentException("Can't add at specified index: index is negative");
         if (head == null && index > 0) throw new IllegalArgumentException("Can't add at specified index: linked list is empty");
-        if (head != null) {
-            if (index == 0) {
-                addFirst(value);
-            } else {
-                Node current = head;
-                for (int i = 0; i < index - 1; i++) {
-                    current = current.next;
-                    if (current == null) throw new IllegalArgumentException("Can't add at specified index: linked list is longer than index provided");
-                }
-                newNode.next = current.next;
-                current.next = newNode;
-            }
-            // also test for index out of bounds
+        if (head == null) {
+            addFirst(value);
+            return;
         }
+        if (index == 0) {
+            addFirst(value);
+        } else {
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+                if (current == null) throw new IllegalArgumentException("Can't add at specified index: linked list is longer than index provided");
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        // also test for index out of bounds
         this.size++;
     }
 
     public Node removeFirst() {
-        if (this.head == null) throw new NullPointerException("Can't remove node: linked list is empty");
-        this.current = head;
-        head = this.current.next;
-        this.current.next = null;
-        this.size--;
-        return this.current;
+        if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
+        current = head;
+        head = current.next;
+        current.next = null;
+        size--;
+        return current;
     }
 
     public Node removeLast() {
@@ -103,12 +105,10 @@ public class LinkedListSingly extends LinkedList {
     public String printValues() {
         if (head == null) throw new NullPointerException("Can't print values: linked list is empty");
         StringBuilder s = new StringBuilder();
-        Node current = head;
-        int counter = 0;
+        current = head;
         while (current != null) {
-            s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
+            s.append(current.value).append(" ");
             current = current.next;
-            counter++;
         }
         return s.toString();
     }
@@ -141,17 +141,17 @@ public class LinkedListSingly extends LinkedList {
     }
 
     public int recalibrateSize() {
-        this.current = this.head;
+        current = head;
         int counter = 0;
-        while (this.current != null) {
-            this.current = this.current.next;
+        while (current != null) {
+            current = current.next;
             counter++;
         }
-        this.size = counter;
-        return this.size;
+        size = counter;
+        return size;
     }
 
     public boolean isEmpty() {
-        return this.head == null;
+        return head == null;
     }
 }

@@ -1,11 +1,10 @@
 package leetcodeDSA.structures;
 
-public class LinkedListDoubly extends LinkedListSingly {
+public class LinkedListDoubly extends LinkedList {
     NodeDouble head;
     NodeDouble tail;
     NodeDouble current;
 
-    @Override
     public void addFirst(int value) {
         NodeDouble newNode = new NodeDouble(value);
         if (head == null) {
@@ -18,7 +17,6 @@ public class LinkedListDoubly extends LinkedListSingly {
         this.size++;
     }
 
-    @Override
     public void addLast(int value) {
         NodeDouble newNode = new NodeDouble(value);
         if (head == null) {
@@ -33,9 +31,12 @@ public class LinkedListDoubly extends LinkedListSingly {
         this.size++;
     }
 
-    @Override
     public void addAtIndex(int value, int index) {
         NodeDouble newNode = new NodeDouble(value);
+        if (head == null) {
+            addFirst(value);
+            return;
+        }
         if (index < ((size() - 1) / 2)) {
             if (head == null && index > 0) throw new IllegalArgumentException("Can't add at specified index: linked list is empty");
             if (head != null) {
@@ -73,7 +74,14 @@ public class LinkedListDoubly extends LinkedListSingly {
         this.size++;
     }
 
-    @Override
+    public NodeDouble removeFirst() {
+        NodeDouble temp = head;
+        head = head.next;
+        temp.next = null;
+        head.previous = null;
+        return temp;
+    }
+
     public NodeDouble removeLast() {
         if (tail == null) throw new NullPointerException("Can't remove node: linked list is empty");
         NodeDouble temp = tail;
@@ -83,9 +91,11 @@ public class LinkedListDoubly extends LinkedListSingly {
         return temp;
     }
 
-    @Override
     public NodeDouble removeAtIndex(int index) {
         if (head == null) throw new NullPointerException("Can't remove node: linked list is empty");
+        if (index == 0) {
+            return removeFirst();
+        }
         NodeDouble current;
         if (index < (size - 1) / 2 || index == (size - 1) / 2) {
             current = head;
@@ -108,11 +118,9 @@ public class LinkedListDoubly extends LinkedListSingly {
         if (head == null) throw new NullPointerException("Can't print values: linked list is empty");
         StringBuilder s = new StringBuilder();
         NodeDouble current = head;
-        int counter = 0;
         while (current != null) {
-            s.append("Node ").append(counter).append(": ").append(current.value).append("\n");
+            s.append(current.value).append(" ");
             current = current.next;
-            counter++;
         }
         return s.toString();
     }
@@ -147,6 +155,21 @@ public class LinkedListDoubly extends LinkedListSingly {
             }
         }
         return current;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public int recalibrateSize() {
+        current = head;
+        int counter = 0;
+        while (current != null) {
+            current = current.next;
+            counter++;
+        }
+        size = counter;
+        return size;
     }
 
     public boolean isEmpty() {
